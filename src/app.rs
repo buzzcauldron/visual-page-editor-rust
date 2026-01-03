@@ -3,6 +3,7 @@ use std::path::PathBuf;
 use crate::page_xml::PageXml;
 use crate::canvas::Canvas;
 use crate::ui;
+use rfd::FileDialog;
 
 pub struct VisualPageEditorApp {
     pub current_file: Option<PathBuf>,
@@ -68,8 +69,24 @@ impl eframe::App for VisualPageEditorApp {
 
 impl VisualPageEditorApp {
     pub fn open_file_dialog(&mut self) {
-        // TODO: Implement file dialog
-        // For now, this is a placeholder
+        if let Some(path) = FileDialog::new()
+            .add_filter("Page XML", &["xml"])
+            .add_filter("Images", &["png", "jpg", "jpeg", "bmp", "gif", "tiff", "tif", "webp"])
+            .add_filter("All Files", &["*"])
+            .pick_file()
+        {
+            // Check if it's an XML file or image
+            if let Some(ext) = path.extension() {
+                if ext.to_string_lossy().to_lowercase() == "xml" {
+                    self.load_file(path);
+                } else {
+                    // For images, we could create a new Page XML or just load the image
+                    log::info!("Image file selected: {:?}", path);
+                    // TODO: Handle image files - create new Page XML or load image
+                    self.current_file = Some(path);
+                }
+            }
+        }
     }
     
     pub fn save_file(&mut self) {
