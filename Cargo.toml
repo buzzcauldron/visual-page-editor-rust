@@ -1,0 +1,49 @@
+[package]
+name = "visual-page-editor"
+version = "1.0.0"
+edition = "2021"
+authors = ["buzzcauldron"]
+description = "Modern visual editor for Page XML files written in Rust"
+license = "MIT"
+repository = "https://github.com/buzzcauldron/visual-page-editor-rust"
+
+[dependencies]
+# GUI Framework - using egui for modern, immediate-mode GUI
+eframe = "0.27"
+egui = "0.27"
+egui_extras = { version = "0.27", features = ["all"] }
+
+# XML parsing and manipulation
+quick-xml = { version = "0.31", features = ["serialize"] }
+roxmltree = "0.19"
+
+# Image handling
+image = "0.24"
+resvg = "0.42"
+usvg = "0.42"
+
+# File I/O and paths
+walkdir = "2.4"
+
+# Error handling
+anyhow = "1.0"
+thiserror = "1.0"
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# Utilities
+log = "0.4"
+env_logger = "0.11"
+
+# XSLT support (via external tool or library)
+# Note: XSLT transformation might need external tools or a different approach
+
+[dev-dependencies]
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+
