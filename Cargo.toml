@@ -11,7 +11,7 @@ repository = "https://github.com/buzzcauldron/visual-page-editor-rust"
 # GUI Framework - using egui for modern, immediate-mode GUI
 eframe = "0.27"
 egui = "0.27"
-egui_extras = { version = "0.27", features = ["all"] }
+# egui_extras can be added later if needed for specific features
 
 # XML parsing and manipulation
 quick-xml = { version = "0.31", features = ["serialize"] }

@@ -5,12 +5,12 @@ use crate::canvas::Canvas;
 use crate::ui;
 
 pub struct VisualPageEditorApp {
-    current_file: Option<PathBuf>,
-    page_xml: Option<PageXml>,
-    canvas: Canvas,
-    file_list: Vec<PathBuf>,
-    current_index: usize,
-    show_menu: bool,
+    pub current_file: Option<PathBuf>,
+    pub page_xml: Option<PageXml>,
+    pub canvas: Canvas,
+    pub file_list: Vec<PathBuf>,
+    pub current_index: usize,
+    pub show_menu: bool,
 }
 
 impl VisualPageEditorApp {
@@ -67,14 +67,14 @@ impl eframe::App for VisualPageEditorApp {
 }
 
 impl VisualPageEditorApp {
-    fn open_file_dialog(&mut self) {
+    pub fn open_file_dialog(&mut self) {
         // TODO: Implement file dialog
         // For now, this is a placeholder
     }
     
-    fn save_file(&mut self) {
+    pub fn save_file(&mut self) {
         if let Some(ref file) = self.current_file {
-            if let Some(ref mut page_xml) = self.page_xml {
+            if self.page_xml.is_some() {
                 // TODO: Implement save functionality
                 log::info!("Saving file: {:?}", file);
             }

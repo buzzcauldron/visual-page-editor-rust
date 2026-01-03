@@ -97,7 +97,7 @@ impl PageXml {
     }
     
     pub fn from_str(content: &str) -> Result<Self> {
-        let doc = Document::parse(content)
+        let _doc = Document::parse(content)
             .context("Failed to parse XML document")?;
         
         // TODO: Implement full XML parsing

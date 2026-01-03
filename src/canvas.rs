@@ -22,13 +22,15 @@ impl Canvas {
         // TODO: Implement canvas rendering
         // This will draw the page image, regions, text, etc.
         
-        if let Some(_xml) = page_xml {
+        if page_xml.is_some() {
             // Render page background
             shapes.push(Shape::Rect(egui::epaint::RectShape {
                 rect: Rect::from_min_max(Pos2::new(0.0, 0.0), Pos2::new(800.0, 600.0)),
                 rounding: egui::Rounding::ZERO,
                 fill: Color32::WHITE,
                 stroke: Stroke::new(1.0, Color32::BLACK),
+                fill_texture_id: egui::TextureId::default(),
+                uv: egui::Rect::from_min_max(Pos2::ZERO, Pos2::new(1.0, 1.0)),
             }));
         }
         
